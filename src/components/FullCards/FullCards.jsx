@@ -14,8 +14,8 @@ const FullCards = (props) => {
             ? briefCard.location.location
             : console.log("упс")}
         </h3>
-        <div>Location: {briefCard.location.name}</div>
-        <div>Timezone: {briefCard.location.timezoneName} </div>
+        <div className={s.moreInfo}>Location: {briefCard.location.name}</div>
+        <div className={s.moreInfo}>Timezone: {briefCard.location.timezoneName} </div>
         <img
           className={s.picture}
           height="200px"
