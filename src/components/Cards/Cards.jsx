@@ -9,9 +9,11 @@ import FullCards from "../FullCards/FullCards";
 const Cards = () => {
   const baseURL = "https://live.vamoos.com/api/itineraries/VMD-VL1234";
   const [cards, setCards] = useState([]);
+  const [newInfo, setNewInfo] = useState([]);
   useEffect(() => {
     axios.get(baseURL).then((res) => {
       setCards(res.data.brief);
+      setNewInfo(res.data.flightAlerts);
     });
   }, []);
 
@@ -33,6 +35,15 @@ const Cards = () => {
 
   const handleModal = () => setIsOpenModal((prev) => !prev);
 
+  let briefFlights = cards.map((brief) => {
+    return newInfo
+      .map((i) => {
+        return brief.flightIds.includes(i.id) ? i : false;
+      })
+      .filter((i) => {
+        return i ? true : false;
+      });
+  });
   return (
     <div className={s.form} type="outline">
       {cards.map((item, index) => (
@@ -74,6 +85,7 @@ const Cards = () => {
           <FullCards
             brief={cards[currentBriefIndex]}
             handleModal={handleModal}
+            briefFlights={briefFlights[currentBriefIndex]}
           />
         ) : (
           console.log("упс")

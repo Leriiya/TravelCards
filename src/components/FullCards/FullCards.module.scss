@@ -44,6 +44,21 @@
   background-color: rgba(250, 223, 104, 0.911);
 }
 
+.airport {
+    font-size: 12px;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.flights {
+    min-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+   
+}
+
 @media (max-width: 583px) {
   .container {
     width: 350px;
